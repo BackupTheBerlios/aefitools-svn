@@ -1,0 +1,60 @@
+#/bin/sh
+
+VERSION_DATE="Thu Apr 28 15:55:31 2005"
+DIST_KEY="2005_4_28_15_55_31"
+
+TAGGER_HOME=/home/herman/public_html/softlab/medpost
+INSTALL_DATE="Wed Aug 10 04:43:50 2005"
+
+case $INSTALL_DATE in
+NA)
+	echo medpost: created $VERSION_DATE, not installed
+	exit
+	;;
+esac
+
+TOKENIZER="$TAGGER_HOME/util/tokenizer -silent -home $TAGGER_HOME"
+TAGGER="$TAGGER_HOME/util/tagger"
+
+TOPT=0
+POPT=0
+for opt in $@
+do
+case $opt in
+# The previous (perl) version of the tokenizer is still available
+-oldtok)
+	TOKENIZER="perl $TAGGER_HOME/util/tokenizer.perl -silent -home $TAGGER_HOME"
+	;;
+-penn)
+	TRANS="perl $TAGGER_HOME/util/tag2penn.perl -preserve"
+	TOPT=1
+	;;
+-specialist)
+	TRANS="perl $TAGGER_HOME/util/tag2spec.perl -preserve"
+	TOPT=1
+	;;
+-rules)
+	POST="perl $TAGGER_HOME/util/rules.perl"
+	POPT=1
+	;;
+-command)
+	EOPT=1
+	;;
+-version)
+	echo medpost: created $VERSION_DATE, installed $INSTALL_DATE
+	exit
+	;;
+esac
+done
+
+case "${EOPT:-0}${TOPT:-0}${POPT:-0}" in
+000) $TOKENIZER $@ | $TAGGER ;;
+001) $TOKENIZER $@ | $TAGGER | $POST ;;
+010) $TOKENIZER $@ | $TAGGER | $TRANS ;;
+011) $TOKENIZER $@ | $TAGGER | $POST | $TRANS ;;
+100) echo "$TOKENIZER $@ | $TAGGER" ;;
+101) echo "$TOKENIZER $@ | $TAGGER | $POST" ;;
+110) echo "$TOKENIZER $@ | $TAGGER | $TRANS" ;;
+111) echo "$TOKENIZER $@ | $TAGGER | $POST | $TRANS" ;;
+esac
+
