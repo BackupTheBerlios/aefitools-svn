@@ -1,0 +1,83 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix s:  <http://localhost/game/ont/seizure.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+s:Seizure_Event a owl:Class ;
+    a aefi:Finding ;
+    s:has_CUI "C0036572"^^xsd:string .
+s:GENERALIZED a s:Seizure_Localization ;
+    s:has_CUI "C0234533"^^xsd:string ;
+    rdfs:label "Generalized Seizure" .
+s:FOCAL a s:Seizure_Localization .
+s:PARTIAL a s:Seizure_Localization .
+s:LOCALIZED a s:Seizure_Localization ;
+    s:has_CUI "C0751495"^^xsd:string ;
+    rdfs:label "Localized Seizure" ;
+    owl:equivalentClass s:PARTIAL ;
+    owl:equivalentClass s:FOCAL .
+s:GENERALIZED owl:disjointWith s:LOCALIZED .
+s:BILATERAL s:kind s:Seizure_Event .
+s:BILATERAL owl:sameAs s:GENERALIZED .
+s:SUDDEN_ONSET a s:Seizure_Onset .
+s:SLOW_ONSET a s:Seizure_Onset .
+s:WITNESSED s:accountOf s:Seizure_Event ;
+    a s:Seizure_Account .
+s:BYHISTORY s:accountOf s:Seizure_Event ;
+    a s:Seizure_Account .
+s:TONIC a s:Motor_Manifestation ;
+    s:has_CUI "C0270844"^^xsd:string ;
+    rdfs:label "Tonic Seizure" .
+s:CLONIC a s:Motor_Manifestation ;
+    s:has_CUI "C0234535"^^xsd:string ;
+    rdfs:label "Clonic Seizure" .
+s:TONIC_CLONIC a s:Motor_Manifestation ;
+    s:has_CUI "C0014549"^^xsd:string ;
+    rdfs:label "Tonic-clonic Seizure" .
+s:ATONIC a s:Motor_Manifestation ;
+    s:has_CUI "C0270846"^^xsd:string ;
+    rdfs:label "Atonic Seizure" .
+s:OTHER_MOTOR a s:Motor_Manifestation .
+s:LEVEL1 a s:Diagnostic_Certainty .
+s:LEVEL2 a s:Diagnostic_Certainty .
+s:LEVEL3 a s:Diagnostic_Certainty .
+s:LEVEL1 owl:disjointWith s:LEVEL2 .
+s:LEVEL2 owl:disjointWith s:LEVEL3 .
+s:LEVEL3 owl:disjointWith s:LEVEL1 .
+
+s:has_CUI a rdf:Property .
+s:accountOf a rdf:Property ;
+    rdfs:domain s:Seizure_Event ;
+    rdfs:range s:Seizure_Account .
+s:onset a rdf:Property ;
+    rdfs:domain s:Seizure_Event ;
+    rdfs:range s:Seizure_Onset .
+s:localization a rdf:Property ;
+    rdfs:domain s:Seizure_Event ;
+    rdfs:range s:Seizure_Localization .
+s:motor a rdf:Property ;
+    rdfs:domain s:Seizure_Event ;
+    rdfs:range s:Motor_Manifestation .
+s:dx_certainty a rdf:Property ;
+    rdfs:domain s:Seizure_Event ;
+    rdfs:range s:Diagnostic_Certainty .
+
+s:Seizure_Event s:dx_certainty [ owl:oneOf ( s:LEVEL1 s:LEVEL2 s:LEVEL3) ] .
+
+[ s:dx_certainty s:LEVEL1 ] s:localization s:GENERALIZED .
+[ s:dx_certainty s:LEVEL1 ] s:account s:WITNESSED .
+[ s:dx_certainty s:LEVEL1 ] s:onset s:SUDDEN .
+[ s:dx_certainty s:LEVEL1 ] s:motor [ owl:oneOf ( s:TONIC s:CLONIC s:ATONIC s:TONIC_CLONIC) ] .
+[ s:dx_certainty s:LEVEL2 ] s:localization s:GENERALIZED .
+[ s:dx_certainty s:LEVEL2 ] s:account s:BYHISTORY .
+[ s:dx_certainty s:LEVEL2 ] s:motor [ owl:oneOf ( s:TONIC s:CLONIC s:ATONIC s:TONIC_CLONIC) ] .
+[ s:dx_certainty s:LEVEL3 ] s:localization s:GENERALIZED .
+[ s:dx_certainty s:LEVEL3 ] s:account s:BYHISTORY .
+[ s:dx_certainty s:LEVEL2 ] s:motor s:OTHER_MOTOR .
+
+

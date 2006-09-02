@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+	 <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	 <!ENTITY kb 'http://protege.stanford.edu/kb#'>
+	 <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+<rdf:RDF xmlns:rdf="&rdf;"
+	 xmlns:kb="&kb;"
+	 xmlns:rdfs="&rdfs;">
+<rdfs:Class rdf:about="&kb;Certainty_Criteria"
+	 rdfs:label="Certainty_Criteria">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&kb;Diagnostic_Certainty"
+	 rdfs:label="Diagnostic_Certainty">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&kb;Motor_Manifestation"
+	 rdfs:label="Motor_Manifestation">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&kb;Seizure_Account"
+	 rdfs:label="Seizure_Account">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&kb;Seizure_Event"
+	 rdfs:label="Seizure_Event">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&kb;Seizure_Localization"
+	 rdfs:label="Seizure_Localization">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdf:Property rdf:about="&kb;has_Account_ID"
+	 rdfs:label="has_Account_ID">
+	<rdfs:domain rdf:resource="&kb;Certainty_Criteria"/>
+	<rdfs:domain rdf:resource="&kb;Seizure_Account"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Account_Name"
+	 rdfs:label="has_Account_Name">
+	<rdfs:domain rdf:resource="&kb;Seizure_Account"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_CUI"
+	 rdfs:label="has_CUI">
+	<rdfs:domain rdf:resource="&kb;Motor_Manifestation"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Certainty_ID"
+	 rdfs:label="has_Certainty_ID">
+	<rdfs:domain rdf:resource="&kb;Certainty_Criteria"/>
+	<rdfs:domain rdf:resource="&kb;Diagnostic_Certainty"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Certainty_Name"
+	 rdfs:label="has_Certainty_Name">
+	<rdfs:domain rdf:resource="&kb;Diagnostic_Certainty"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Level_ID"
+	 rdfs:label="has_Level_ID">
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Level_Name"
+	 rdfs:label="has_Level_Name">
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Localization"
+	 rdfs:label="has_Localization">
+	<rdfs:domain rdf:resource="&kb;Seizure_Event"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Localization_ID"
+	 rdfs:label="has_Localization_ID">
+	<rdfs:domain rdf:resource="&kb;Certainty_Criteria"/>
+	<rdfs:domain rdf:resource="&kb;Seizure_Localization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Localization_Name"
+	 rdfs:label="has_Localization_Name">
+	<rdfs:domain rdf:resource="&kb;Seizure_Localization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Motor_ID"
+	 rdfs:label="has_Motor_ID">
+	<rdfs:domain rdf:resource="&kb;Certainty_Criteria"/>
+	<rdfs:domain rdf:resource="&kb;Motor_Manifestation"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Motor_Manifestation"
+	 rdfs:label="has_Motor_Manifestation">
+	<rdfs:domain rdf:resource="&kb;Seizure_Event"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Motor_Name"
+	 rdfs:label="has_Motor_Name">
+	<rdfs:domain rdf:resource="&kb;Motor_Manifestation"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;has_Onset"
+	 rdfs:label="has_Onset">
+	<rdfs:domain rdf:resource="&kb;Seizure_Event"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&kb;motor"
+	 rdfs:label="motor">
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+</rdf:RDF>

@@ -1,0 +1,8 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix casedef:  <http://localhost/game/ont/casedef.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+diagnostic_Certainty a owl:Class .

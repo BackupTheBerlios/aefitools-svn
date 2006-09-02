@@ -1,0 +1,246 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix aefi:  <http://www.owl-ontologies.com/unnamed.owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+# version info
+<> a aefi:aefi;
+    a owl:Ontology ;
+    owl:versionInfo "0.1" .
+
+# define entities
+
+aefi:Adverse_Event a owl:Class .
+aefi:Encounter a owl:Class .
+aefi:Signs_Symptoms a owl:Class .
+aefi:Body_Location a owl:Class .
+aefi:Immunization a owl:Class .
+aefi:Findings a owl:Class .
+aefi:Vaccine a owl:Class .
+aefi:Brand_Name a owl:Class .
+aefi:Generic_Name a owl:Class .
+aefi:Medical_Device a owl:Class .
+aefi:Temperature a owl:Class .
+aefi:Blood_Pressure a owl:Class .
+aefi:Heart_Rate a owl:Class .
+aefi:Respiratory_Rate a owl:Class .
+aefi:Episode_Onset a owl:Class .
+aefi:Onset_Units a owl:Class .
+aefi:Provider a owl:Class .
+aefi:Nurse a owl:Class .
+aefi:Organ_System a owl:Class .
+aefi:Complaint a owl:Class .
+aefi:Negatives a owl:Class .
+aefi:Keywords a owl:Class .
+aefi:Finding a owl:Class .
+aefi:Vital_Sign a owl:Class .
+aefi:Lab_Finding a owl:Class .
+aefi:Semantic_Type a owl:Class .
+aefi:Concept a owl:Class .
+aefi:VaccineViral a owl:Class .
+aefi:VaccineBacterial a owl:Class .
+
+# define properties
+# refers to UMLS semantic type TUI
+
+aefi:has_STYPE a rdf:Property ;
+    rdfs:domain aefi:Semantic_Type .
+aefi:has_CUI a rdf:Property ;
+    rdfs:domain aefi:Concept .
+aefi:has_NAME a rdf:Property .
+aefi:has_DATE a rdf:Property .
+aefi:has_BrandName a aefi:has_NAME .
+aefi:has_GenericName a aefi:has_NAME .
+aefi:involves a rdf:Property .
+aefi:has_Keyword a rdf:Property .
+aefi:measuredby a rdf:Property .
+aefi:indicatedby a rdf:Property .
+aefi:measures a rdf:Property .
+aefi:measures owl:inverseOf aefi:measuredby .
+aefi:treatment_drug a rdf:Property .
+aefi:relatedto a rdf:Property .
+aefi:data a rdf:Property .
+aefi:uses a rdf:Property .
+aefi:measurement_site a rdf:Property .
+aefi:used_in owl:inverseOf aefi:uses .
+
+# define schema
+
+aefi:Encounter
+    aefi:has_STYPE "T058"^^xsd:String  ;      # Health care activity
+    aefi:data "encounter" ;
+    aefi:involves aefi:Provider ;
+    aefi:involves aefi:Immunization ;
+    aefi:involves aefi:Finding ;
+    aefi:involves aefi:Adverse_Event .
+
+aefi:Provider
+    aefi:has_STYPE "T097"^^xsd:string ;
+    aefi:has_CUI "C1138603"^^xsd:string ;
+    aefi:data "provider" .
+
+aefi:Immunization
+    aefi:has_STYPE "T061"^^xsd:string ;
+    aefi:has_STYPE "T033"^^xsd:string ;
+    aefi:has_CUI "C0020971"^^xsd:string ;
+    aefi:has_CUI "C0496628"^^xsd:string ;
+    aefi:has_CUI "C1368825"^^xsd:string ;
+    aefi:data "imunization" ;
+    aefi:involves aefi:Vaccine .
+
+aefi:Finding
+    aefi:has_STYPE "T033"^^xsd:string ;        # Clinical Finding
+    aefi:has_CUI "C0586173"^^xsd:string ;
+    aefi:data "finding" .
+
+aefi:Complaint a aefi:Finding .
+aefi:Signs_Symptoms a aefi:Finding .
+aefi:Lab_Finding a aefi:Finding .
+aefi:Vital_Sign a aefi:Finding .
+aefi:Negatives a aefi:Finding .
+
+aefi:Complaint
+    aefi:has_STYPE "T184"^^xsd:String ;         # Sign or Symptom
+    aefi:has_CUI "C0277786"^^xsd:String ;
+    aefi:data "complaint" .
+
+aefi:Physician
+    a aefi:Provider ;
+    aefi:has_STYPE "T097"^^xsd:String ;         # Professional or Occupational Group
+    aefi:has_CUI "C0031831"^^xsd:string ;
+    aefi:data "physician" .
+
+aefi:Adverse_Event
+    aefi:has_STYPE "T033"^^xsd:String ;
+    aefi:has_CUI "C0877248"^^xsd:String ;
+    aefi:data "adverse_event" .
+
+aefi:Vaccine
+    aefi:has_STYPE "T121"^^xsd:String ;
+    aefi:has_CUI "C0042210"^^xsd:String ;
+    aefi:data "vaccine" .
+
+aefi:VaccineViral
+    a aefi:Vaccine ;
+    aefi:has_STYPE "T121"^^xsd:String ;
+    aefi:has_CUI "C0042742"^^xsd:String ;
+    aefi:data "vaccine" .
+
+aefi:VaccineBacterial
+    a aefi:Vaccine ;
+    aefi:has_STYPE "T121"^^xsd:String ;
+    aefi:has_CUI "C0004632"^^xsd:String ;
+    aefi:data "vaccine" .
+
+aefi:Nurse
+    a aefi:Provider ;
+    aefi:has_STYPE "T091"^^xsd:String ;         # Biomedical Occupation or Discipline
+    aefi:has_STYPE "T097"^^xsd:String ;         # Professional or Occupational Group
+    aefi:has_CUI "C0028677"^^xsd:String ;
+    aefi:data "nurse" .
+
+aefi:Adverse_Event
+    aefi:has_STYPE "T033" ;                     # Finding
+    aefi:has_CUI "C0877248"^^xsd:String .
+
+aefi:Signs_Symptoms
+    aefi:has_STYPE "T184"^^xsd:String ;         # Sign or Symptom
+    aefi:data "ssx" .
+
+aefi:Lab_Finding
+    aefi:has_STYPE "T033"^^xsd:string ;
+    aefi:has_CUI "C0260877"^^xsd:string ;
+    aefi:data "labfinding" .
+
+aefi:Vital_Sign
+    aefi:has_STYPE "T033"^^xsd:string ;
+    aefi:has_CUI "C0518766"^^xsd:string ;
+    aefi:data "vitalsign" .
+
+aefi:Temperature
+    a aefi:Vital_Sign ;
+    aefi:has_STYPE "T081"^^xsd:String ;         # Qualitative Concept
+    aefi:has_CUI "C0039476"^^xsd:string ;
+    aefi:data "temperature" ;
+    aefi:measuredby "thermometer"^^xsd:string .
+
+aefi:Blood_Pressure
+    a aefi:Vital_Sign ;
+    aefi:data "bloodpressure" ;
+    aefi:has_STYPE "T040"^^xsd:String ;         # Organism Function
+    aefi:has_STYPE "T060"^^xsd:String ;         # Diagnostic Procedure
+    aefi:has_CUI "C0005823"^^xsd:string ;
+    aefi:has_CUI "C0005824"^^xsd:string .
+
+aefi:Pulse_Rate
+    a aefi:Vital_Sign ;
+    aefi:data "pulserate" ;
+    aefi:has_STYPE "T033"^^xsd:String ;         # Finding
+    aefi:has_CUI "C0232117"^^xsd:string .
+
+aefi:Respiratory_Rate
+    a aefi:Vital_Sign ;
+    aefi:data "respiratoryrate" ;
+    aefi:has_STYPE "T201"^^xsd:String ;         # Clinical Attribute
+    aefi:has_CUI "C0231832"^^xsd:string .
+
+aefi:Body_Location
+    aefi:has_STYPE "T023"^^xsd:String .
+
+aefi:Axilla
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T029"^^xsd:string ;
+    aefi:has_CUI "C0004454"^^xsd:string ;
+    aefi:data "bodylocation" ;
+    aefi:measurement_site aefi:Temperature .
+
+aefi:Rectum a aefi:Body_Location ;
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T082"^^xsd:string ;
+    aefi:has_CUI "C0205052"^^xsd:string ;
+    aefi:data "bodylocation" ;
+    aefi:measurement_site aefi:Temperature .
+
+aefi:Upper_Arm
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T029"^^xsd:string ;
+    aefi:has_CUI "C0446516"^^xsd:string ;
+    aefi:data "bodylocation" ;
+    aefi:measurement_site aefi:Blood_Pressure .
+
+aefi:Elbow
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T029"^^xsd:string ;
+    aefi:has_CUI "C0013769"^^xsd:string ;
+    aefi:data "bodylocation" .
+
+aefi:Lower_Arm
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T029"^^xsd:string ;
+    aefi:has_CUI "C0016536"^^xsd:string ;
+    aefi:data "bodylocation" .
+
+aefi:Hand
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T023"^^xsd:string ;
+    aefi:has_CUI "C0018563"^^xsd:string ;
+    aefi:data "bodylocation" .
+
+aefi:Fingers
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T029"^^xsd:string ;
+    aefi:has_CUI "C0016129"^^xsd:string ;
+    aefi:data "bodylocation" .
+
+aefi:Sublingual
+    a aefi:Body_Location ;
+    aefi:has_STYPE "T023"^^xsd:string ;
+    aefi:has_CUI "C0558302"^^xsd:string ;
+    aefi:data "bodylocation" ;
+    aefi:measurement_site aefi:Temperature .
+
+aefi:Signs_Symptoms
+    aefi:involves aefi:Body_Location ;
+    aefi:involves aefi:Organ_System .

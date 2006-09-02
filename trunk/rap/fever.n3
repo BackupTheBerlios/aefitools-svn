@@ -1,0 +1,58 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix f:  <http://localhost/game/ont/fever.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+f:Fever_Event a owl:Class ;
+    a aefi:Finding .
+f:Temperature_Class a owl:Class .
+f:Degrees_Celsius  a owl:Class ;
+    rdfs:comment "Range of values for degrees Celsius" .
+f:Degrees_Fahrenheit  a owl:Class ;
+    rdfs:comment "Range of values for degrees Fahrenheit" .
+f:ABOVENORMAL a f:Temperature_Class .
+f:NORMAL a f:Temperature_Class .
+f:ABOVENORMAL owl:disjointWith f:NORMAL .
+f:MEASURED a f:Temperature_Acquisition ;
+    rdfs:comment "Measured with a device at an anatomic site" .
+f:PALPATED a f:Temperature_Acquisition .
+f:ABOVENORMAL f:degrees_Celsius [ math:greaterThan "37" ] .
+f:ABOVENORMAL f:degrees_Fahrenheit [ math:greaterThan "98" ] .
+f:NORMAL f:degrees_Celsius [ math:equalTo "37" ] ;
+    f:degrees_Celsius [ math:lessThan "37" ] .
+f:NORMAL f:degrees_Fahrenheit [ math:equalTo "98" ] ;
+    f:degrees_Fahrenheit [ math:lessThan "98" ] .
+[ math:lessThan "98" ] rdfs:subclassOf f:Degrees_Fahrenheit .
+[ math:equalTo "98" ] rdfs:subclassOf f:Degrees_Fahrenheit .
+[ math:greaterThan "98" ] rdfs:subclassOf f:Degrees_Fahrenheit .
+[ math:lessThan "37" ] rdfs:subclassOf f:Degrees_Celsius .
+[ math:equalTo "37" ] rdfs:subclassOf f:Degrees_Celsius .
+[ math:greaterThan "37" ] rdfs:subclassOf f:Degrees_Celsius .
+f:LEVEL1 a f:Diagnostic_Certainty .
+
+f:observation a rdf:Property ;
+    rdfs:domain aefi:Finding ;
+    rdfs:range f:Degrees_Fahrenheit, f:Degrees_Celsius .
+f:dx_certainty a rdf:Property ;
+    rdfs:domain f:Fever_Event ;
+    rdfs:range f:Diagnostic_Certainty .
+f:source a rdf:Property ;
+    rdfs:domain f:Fever_Event ;
+    rdfs:range f:Temperature_Acquisition .
+f:temp_class a rdf:Property ;
+    rdfs:domain f:Fever_Event ;
+    rdfs:range f:Temperature_Class .
+f:degrees_Celsius a rdf:Property ;
+    rdfs:domain f:Temperature_Class ;
+    rdfs:range f:Degrees_Celsius .
+f:degrees_Fahrenheit a rdf:Property ;
+    rdfs:domain f:Temperature_Class ;
+    rdfs:range f:Degrees_Celsius .
+
+[ f:dx_certainty f:LEVEL1 ] f:source f:MEASURED .
+[ f:dx_certainty f:LEVEL1 ] f:temp_class f:ABOVENORMAL .

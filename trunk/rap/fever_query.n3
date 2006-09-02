@@ -1,0 +1,24 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix f:  <http://localhost/game/ont/fever.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+f:diagnostic_Certainty owl:oneOf ( f:levelOne f:levelTwo f:levelThree ) .
+
+f:degrees_Celsius a rdf:Property .
+f:degrees_Fahrenheit a rdf:Property .
+
+{
+    f:diagnostic_Certainty rdf:value ?level
+
+} log:implies {
+
+    aefi:Temperature aefi:measuredby aefi:Thermometer .
+    aefi:Temperature f:degrees_Celsius [ math:equalTo "40"^^xsd:float ] .
+
+} .

@@ -1,0 +1,67 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix h:  <http://localhost/game/ont/hhe.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+h:HHE_Event a aefi:Finding ;
+    rdfs:label "Hypotonic-Hyporesponsive Episode" .
+h:LIMPNESS a h:Criterion .
+h:HYPOTONIA a h:Criterion .
+h:HYPORESPONSIVENESS a h:Criterion .
+h:UNRESPONSIVENESS a h:Criterion .
+h:PALLOR a h:Criterion .
+h:CYANOSIS a h:Criterion .
+h:Criterion1 a h:Criterion ;
+    owl:oneOf ( h:HYPOTONIA h:LIMPNESS ) .
+h:HYPOTONIA owl:equivalentClass h:LIMPNESS .
+h:Criterion2 a h:Criterion ;
+    owl:oneOf ( h:HYPORESPONSIVENESS h:UNRESPONSIVENESS ) .
+h:HYPORESPONSIVENESS owl:disjointWith h:UNRESPONSIVENESS .
+h:Criterion3 a h:Criterion ;
+    owl:oneOf ( h:PALLOR h:CYANOSIS ) .
+h:PALLOR owl:disjointWith h:CYANOSIS .
+h:HHE_Event h:dx_certainty h:Diagnostic_Certainty .
+
+h:SUDDEN a h:Kindof_Onset .
+h:SLOW a h:Kindof_Onset .
+h:LEVEL1 a h:Diagnostic_Certainty ;
+    owl:disjointWith h:LEVEL2, h:LEVEL3 .
+h:LEVEL2 a h:Diagnostic_Certainty ;
+    owl:disjointWith h:LEVEL1, h:LEVEL3 .
+h:LEVEL3 a h:Diagnostic_Certainty ;
+    owl:disjointWith h:LEVEL1, h:LEVEL2 .
+
+h:onset a rdf:Property ;
+    rdfs:domain h:HHE_Event ;
+    rdfs:range h:Kindof_Onset .
+h:dx_certainty a rdf:Property ;
+    rdfs:domain h:HHE_Event ;
+    rdfs:range h:Diagnostic_Certainty .
+h:criterion a rdf:Property ;
+    rdfs:domain h:HHE_Event ;
+    rdfs:range h:Criterion .
+
+h:Seizure_Event h:dx_certainty [ owl:oneOf ( h:LEVEL1 h:LEVEL2 h:LEVEL3) ] .
+
+[ h:dx_certainty h:LEVEL1 ] h:onset h:SUDDEN ;
+    h:criterion [ owl:unionOf ( h:Criterion1 h:Criterion2 h:Criterion3 ) ] .
+
+[ h:dx_certainty h:LEVEL2 ] h:onset h:SUDDEN ;
+    h:criterion [ owl:oneOf
+        (
+            owl:unionOf ( h:Criterion1 h:Criterion2 )
+            owl:unionOf ( h:Criterion1 h:Criterion3 )
+            owl:unionOf ( h:Criterion2 h:Criterion3 )
+        ) ] .
+[ h:dx_certainty h:LEVEL2 ] h:onset h:SUDDEN ;
+    h:criterion [ owl:oneOf
+        (
+            owl:unionOf ( h:Criterion1 h:Criterion2 )
+            owl:unionOf ( h:Criterion1 h:Criterion3 )
+            owl:unionOf ( h:Criterion2 h:Criterion3 )
+        ) ] .

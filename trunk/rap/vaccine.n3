@@ -1,0 +1,12 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix v:  <http://www.owl-ontologies.com/unnamed.owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+
+v:Biological a owl:Class .
+
+v:Vaccine a v:Biological .
+v:Vaccine_Bacterial a v.Vaccine .
+v.Vaccine_Viral a v.Vaccine .

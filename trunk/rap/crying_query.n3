@@ -1,0 +1,24 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix c:      <http://localhost/game/ont/crying.rdf#> .
+@prefix aefi:   <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix log:    <http://www.w3.org/2000/10/swap/log#> .
+@prefix math:   <http://www.w3.org/2000/10/swap/math#> .
+
+c:e001 a c:Crying_Event .
+c:e001 c:duration [ math:greaterThan "3"^^xsd:float ] .
+c:e001 c:duration_Unit "hours" .
+
+{
+    c:e001 c:dx_certainty ?level .
+
+} log:implies {
+
+    ?event c:duration [ math:greaterThan "3"^^xsd:float ] .
+    ?event c:duration_Unit "hours" .
+
+} .
+

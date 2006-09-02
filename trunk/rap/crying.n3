@@ -1,0 +1,52 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix c:  <http://localhost/game/ont/crying.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+c:Crying_Event a aefi:Finding .
+c:CONTINUOUS a c:Kindof_Crying .
+c:EPISODIC a c:Kindof_Crying .
+c:CONTINUOUS owl:disjointWith c:EPISODIC .
+c:CERTAIN a c:Likelihood .
+c:LIKELY a c:Likelihood .
+c:LONG a c:Crying_Duration .
+c:LONG owl:sameAs [ math:greaterThan "3"; c:duration_Unit :HOURS ] .
+c:SHORT a c:Crying_Duration .
+c:LONG owl:disjointWith c:SHORT .
+c:HOURS c:unitOf c:Crying_Duration .
+c:MINUTES c:unitOf c:Crying_Duration .
+c:LEVEL1 a c:Diagnostic_Certainty .
+c:LEVEL2 a c:Diagnostic_Certainty .
+c:LEVEL1 owl:disjointWith c:LEVEL2 .
+c:Crying_Event c:dx_certainty c:Diagnostic_Certainty .
+
+c:duration a rdf:Property ;
+    rdfs:domain c:Crying_Event ;
+    rdfs:range c:Crying_Duration .
+c:duration_Unit a rdf:Property ;
+    rdfs:domain c:Crying_Event ;
+    rdfs:range [ owl:oneOf ( c:HOURS c:MINUTES ) ] .
+c:characteristic a rdf:Property ;
+    rdfs:domain c:Crying_Event ;
+    rdfs:range c:Kindof_Crying .
+c:likelihood a rdf:Property ;
+    rdfs:domain c:Kindof_Crying ;
+    rdfs:range c:Likelihood .
+c:dx_certainty a rdf:Property ;
+    rdfs:domain c:Crying_Event ;
+    rdfs:range c:Diagnostic_Certainty .
+
+c:Crying_Event c:dx_certainty [ owl:oneOf ( c:LEVEL1 c:LEVEL2 ) ] .
+
+[ c:dx_certainty c:LEVEL1 ] c:duration c:LONG .
+[ c:dx_certainty c:LEVEL1 ] c:characteristic c:CONTINUOUS .
+[ c:dx_certainty c:LEVEL1 ] c:likelihood c:CERTAIN .
+[ c:dx_certainty c:LEVEL2 ] c:duration c:LONG .
+[ c:dx_certainty c:LEVEL2 ] c:characteristic c:CONTINUOUS .
+[ c:dx_certainty c:LEVEL2 ] c:likelihood c:LIKELY .
+

@@ -1,0 +1,84 @@
+# Base: http://www.owl-ontologies.com/unnamed.owl#
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix n:  <http://localhost/game/ont/nodule.rdf#> .
+@prefix aefi:  <http://localhost/game/ont/aefi.rdf#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+@prefix math: <http://www.w3.org/2000/10/swap/math#> .
+
+n:Nodule_Event a aefi:Finding ;
+    owl:equivalentClass
+    [
+        a owl:Class ;
+        owl:oneOf ( n:Granuloma :SubcutaneousNodule :AntigenCyst )
+    ] .
+n:DEMARCATED a n:Border_Class .
+n:DISCRETE a n:Border_Class .
+n:DEMARCATED owl:equivalentClass n:DISCRETE .
+n:FIRM a n:Nodule_Consistency .
+n:SOFT a n:Nodule_Consistency .
+n:MASS a n:Nodule_Form .
+n:LUMP a n:Nodule_Form .
+n:MASS owl:equivalentClass n:LUMP .
+n:ONSITE a n:Location_InjectionSite .
+n:NEARSITE a n:Location_InjectionSite .
+n:WITH_PRURITUS a n:Nodule_Pruritus .
+n:WITHOUT_PRURITUS a n:Nodule_Pruritus .
+n:WITH_PRURITUS owl:disjointWith n:WITHOUT_PRURITUS .
+n:TENDER a n:Nodule_Tenderness .
+n:NONTENDER a n:Nodule_Tenderness .
+n:TENDER owl:disjointWith n:NONTENDER .
+n:WITH_ABSCESS a n:Nodule_Abscess .
+n:WITHOUT_ABSCESS a n:Nodule_Abscess .
+n:WITH_ABSCESS owl:disjointWith n:WITHOUT_ABSCESS .
+n:WITH_REDNESS a n:Nodule_Redness .
+n:WITHOUT_REDNESS a n:Nodule_Redness .
+n:WITH_REDNESS owl:disjointWith n:WITHOUT_REDNESS .
+n:WITH_WARMTH a n:Nodule_Warmth .
+n:WITHOUT_WARMTH a n:Nodule_Warmth .
+n:WITH_WARMTH owl:disjointWith n:WITHOUT_WARMTH .
+
+n:Nodule_Event n:dx_certainty n:Diagnostic_Certainty .
+n:LEVEL1 a n:Diagnostic_Certainty .
+
+n:dx_certainty a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Diagnostic_Certainty .
+n:border a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Border_Class .
+n:consistency a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Consistency .
+n:form a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Form .
+n:location a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Location_InjectionSite .
+n:pruritus a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Pruritus .
+n:tender a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Tenderness .
+n:abscess a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Abscess .
+n:redness a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Redness .
+n:warmth a rdf:Property ;
+    rdfs:domain n:Nodule_Event ;
+    rdfs:range n:Nodule_Warmth .
+
+[ n:dx_certainty n:LEVEL1 ] n:form  [ owl:oneOf ( n:MASS n:LUMP) ] ;
+    n:border [ owl:oneOf ( n:DEMARCATED n:DISCRETE ) ] ;
+    n:consistency n:FIRM ;
+    n:location n:ONSITE ;
+    n:abscess n:WITHOUT_ABSCESS ;
+    n:redness n:WITHOUT_REDNESS ;
+    n:warmth n:WITHOUT_WARMTH .
+

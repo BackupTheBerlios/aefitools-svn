@@ -1,0 +1,278 @@
+
+<!-- Processed by Id: cwm.py,v 1.164 2004/10/28 17:41:59 timbl Exp -->
+<!--     using base file:/home/herman/public_html/softlab/rap/aefi.n3-->
+
+
+<rdf:RDF xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+    xmlns:aefi="http://www.owl-ontologies.com/unnamed.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <aefi rdf:about="">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+        <owl:versionInfo>0.1</owl:versionInfo>
+    </aefi>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Adverse_Event">
+        <data>adverse_event</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#String">C0877248</has_CUI>
+        <has_STYPE>T033</has_STYPE>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T033</has_STYPE>
+    </owl:Class>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Axilla">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0004454</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T029</has_STYPE>
+    </Body_Part>
+
+    <Vital_Sign rdf:about="http://www.owl-ontologies.com/unnamed.owl#Blood_Pressure">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>bloodpressure</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0005823</has_CUI>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0005824</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T040</has_STYPE>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T060</has_STYPE>
+    </Vital_Sign>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Body_Location">
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Body_Part">
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T023</has_STYPE>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Brand_Name">
+    </owl:Class>
+
+    <Finding rdf:about="http://www.owl-ontologies.com/unnamed.owl#Complaint">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>complaint</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0277786</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T184</has_STYPE>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T169</has_STYPE>
+    </Finding>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Concept">
+    </owl:Class>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Elbow">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0013769</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T029</has_STYPE>
+    </Body_Part>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Encounter">
+        <data>encounter</data>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T058</has_STYPE>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Adverse_Event"/>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Finding"/>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Immunization"/>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Provider"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Episode_Onset">
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Finding">
+        <data>finding</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0586173</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T033</has_STYPE>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Findings">
+    </owl:Class>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Fingers">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0016129</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T029</has_STYPE>
+    </Body_Part>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Generic_Name">
+    </owl:Class>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Hand">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0018563</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T023</has_STYPE>
+    </Body_Part>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Heart_Rate">
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Immunization">
+        <data>imunization</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0020971</has_CUI>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0496628</has_CUI>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C1368825</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T033</has_STYPE>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T061</has_STYPE>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Vaccine"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Keywords">
+    </owl:Class>
+
+    <Finding rdf:about="http://www.owl-ontologies.com/unnamed.owl#Lab_Finding">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>labfinding</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0260877</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T033</has_STYPE>
+    </Finding>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Lower_Arm">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0016536</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T029</has_STYPE>
+    </Body_Part>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Medical_Device">
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Negatives">
+    </owl:Class>
+
+    <Provider rdf:about="http://www.owl-ontologies.com/unnamed.owl#Nurse">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>nurse</data>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T091</has_STYPE>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T097</has_STYPE>
+    </Provider>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Onset_Units">
+    </owl:Class>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Organ_System">
+    </owl:Class>
+
+    <Provider rdf:about="http://www.owl-ontologies.com/unnamed.owl#Physician">
+        <data>physician</data>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T097</has_STYPE>
+    </Provider>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Provider">
+        <data>provider</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C1138603</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T097</has_STYPE>
+    </owl:Class>
+
+    <Vital_Sign rdf:about="http://www.owl-ontologies.com/unnamed.owl#Pulse_Rate">
+        <data>pulserate</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0232117</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T033</has_STYPE>
+    </Vital_Sign>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Rectum">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0205052</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T082</has_STYPE>
+    </Body_Part>
+
+    <Vital_Sign rdf:about="http://www.owl-ontologies.com/unnamed.owl#Respiratory_Rate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>respiratoryrate</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0231832</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T201</has_STYPE>
+    </Vital_Sign>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Semantic_Type">
+    </owl:Class>
+
+    <Finding rdf:about="http://www.owl-ontologies.com/unnamed.owl#Signs_Symptoms">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>ssx</data>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T184</has_STYPE>
+        <involves rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Body_Part"/>
+    </Finding>
+
+    <Vital_Sign rdf:about="http://www.owl-ontologies.com/unnamed.owl#Temperature">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>temperature</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0039476</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T081</has_STYPE>
+        <measuredby rdf:parseType="Resource">
+            <devicename rdf:datatype="http://www.w3.org/2001/XMLSchema#string">thermometer</devicename>
+        </measuredby>
+    </Vital_Sign>
+
+    <Body_Part rdf:about="http://www.owl-ontologies.com/unnamed.owl#Upper_Arm">
+        <data>bodylocation</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0446516</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T029</has_STYPE>
+    </Body_Part>
+
+    <owl:Class rdf:about="http://www.owl-ontologies.com/unnamed.owl#Vaccine">
+        <data>vaccine</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#String">C0042210</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#String">T121</has_STYPE>
+    </owl:Class>
+
+    <Vaccine rdf:about="http://www.owl-ontologies.com/unnamed.owl#VaccineBacterial">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </Vaccine>
+
+    <Vaccine rdf:about="http://www.owl-ontologies.com/unnamed.owl#VaccineViral">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </Vaccine>
+
+    <Finding rdf:about="http://www.owl-ontologies.com/unnamed.owl#Vital_Sign">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+        <data>vitalsign</data>
+        <has_CUI rdf:datatype="http://www.w3.org/2001/XMLSchema#string">C0518766</has_CUI>
+        <has_STYPE rdf:datatype="http://www.w3.org/2001/XMLSchema#string">T033</has_STYPE>
+    </Finding>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#data">
+    </rdf:Property>
+
+    <has_NAME rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_BrandName">
+    </has_NAME>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_CUI">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Concept"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_DATE">
+    </rdf:Property>
+
+    <has_NAME rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_GenericName">
+    </has_NAME>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_Keyword">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_NAME">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#has_STYPE">
+        <rdfs:domain rdf:resource="http://www.owl-ontologies.com/unnamed.owl#Semantic_Type"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#indicatedby">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#involves">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#measuredby">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#measures">
+        <owl:InverseOf rdf:resource="http://www.owl-ontologies.com/unnamed.owl#measuredby"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#relatedto">
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#treatment_drug">
+    </rdf:Property>
+
+    <rdf:Description rdf:about="http://www.owl-ontologies.com/unnamed.owl#used_in">
+        <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/unnamed.owl#uses"/>
+    </rdf:Description>
+
+    <rdf:Property rdf:about="http://www.owl-ontologies.com/unnamed.owl#uses">
+    </rdf:Property>
+</rdf:RDF>
